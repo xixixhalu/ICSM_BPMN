@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="icsm_2nd_level" name="ICSM Second Level" isExecutable="true">
+  <process id="Architected_Agile" name="Architected Agile" isExecutable="true">
     <subProcess id="sp_ep" name="Exploration Phase">
       <startEvent id="se_ep" name="Start Exploration Phase"></startEvent>
-      <userTask id="ut_ep_ecs" name="Explore Current System" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_ep_pamp" name="Plan and Manage Project" activiti:assignee="kermit"></userTask>
+      <userTask id="ut_ep_ecs" name="Explore Current System" activiti:candidateGroups="Operational Concept Engineer" activiti:category="Operational Concept Engineer"></userTask>
+      <userTask id="ut_ep_pamp" name="Plan and Manage Project - Exploration" activiti:candidateGroups="Life Cycle Planner" activiti:category="Life Cycle Planner"></userTask>
       <endEvent id="ee_ep" name="End Exploration Phase"></endEvent>
       <parallelGateway id="pg_ep_1"></parallelGateway>
       <parallelGateway id="pg_ep_2"></parallelGateway>
@@ -17,12 +17,12 @@
     </subProcess>
     <subProcess id="sp_vp" name="Valuation Phase">
       <startEvent id="se_vp" name="Start Valuation Phase"></startEvent>
-      <userTask id="ut_vp_doc" name="Develop Operational Concept" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_vp_ppfe" name="Provide Project Feasibility Evidence" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_vp_p" name="Prototyping" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_vp_pamp" name="Plan and Manage Project" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_vp_pwn" name="Perform WinWin Negotiation" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_vp_dqacp" name="Define Quality and Configuration policy" activiti:assignee="kermit"></userTask>
+      <userTask id="ut_vp_doc" name="Develop Operational Concept" activiti:candidateGroups="Operational Concept Engineer" activiti:category="Operational Concept Engineer"></userTask>
+      <userTask id="ut_vp_ppfe" name="Provide Project Feasibility Evidence" activiti:candidateGroups="Feasibility Analyst" activiti:category="Feasibility Analyst"></userTask>
+      <userTask id="ut_vp_p" name="Prototyping - Valuation" activiti:candidateGroups="Prototyper" activiti:category="Prototyper"></userTask>
+      <userTask id="ut_vp_pamp" name="Plan and Manage Project - Valuation" activiti:candidateGroups="Project Manager" activiti:category="Project Manager"></userTask>
+      <userTask id="ut_vp_pwn" name="Perform WinWin Negotiation" activiti:candidateGroups="Requirements Engineer" activiti:category="Requirements Engineer"></userTask>
+      <userTask id="ut_vp_dqacp" name="Define Quality and Configuration Policy" activiti:candidateGroups="Quality Focal Point" activiti:category="Quality Focal Point"></userTask>
       <endEvent id="ee_vp" name="End Valuation Phase"></endEvent>
       <parallelGateway id="pg_vp_1"></parallelGateway>
       <parallelGateway id="pg_vp_2"></parallelGateway>
@@ -43,11 +43,11 @@
     </subProcess>
     <subProcess id="sp_fp" name="Foundations Phase">
       <startEvent id="se_fp" name="Start Foundation Phase"></startEvent>
-      <userTask id="ut_fp_aps" name="Assess Project Status" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_fp_pamp" name="Plan and Manage Project" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_fp_mpq" name="Manage Project Quality" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_fp_p" name="Prototyping" activiti:assignee="kermit"></userTask>
-      <userTask id="ut_fp_dsa" name="Develop Software Architecture" activiti:assignee="kermit"></userTask>
+      <userTask id="ut_fp_aps" name="Assess Project Status" activiti:candidateGroups="Feasibility Analyst" activiti:category="Feasibility Analyst"></userTask>
+      <userTask id="ut_fp_pamp" name="Plan and Manage Project - Foundations" activiti:candidateGroups="Project Manager" activiti:category="Project Manager"></userTask>
+      <userTask id="ut_fp_mpq" name="Manage Project Quality" activiti:candidateGroups="Quality Focal Point" activiti:category="Quality Focal Point"></userTask>
+      <userTask id="ut_fp_p" name="Prototyping - Foundations" activiti:candidateGroups="Prototyper" activiti:category="Prototyper"></userTask>
+      <userTask id="ut_fp_dsa" name="Develop Software Architecture" activiti:candidateGroups="System Architect" activiti:category="System Architect"></userTask>
       <endEvent id="ee_fp" name="End Foundation Phase"></endEvent>
       <parallelGateway id="pg_fp_1"></parallelGateway>
       <parallelGateway id="pg_fp_2"></parallelGateway>
@@ -76,8 +76,8 @@
           <loopCardinality>${loopCounter}</loopCardinality>
         </multiInstanceLoopCharacteristics>
       </subProcess>
-      <userTask id="ut_dp_ccd" name="Core Capability Drivethrough"></userTask>
-      <userTask id="ut_dp_trr" name="Transition Readiness Review"></userTask>
+      <userTask id="ut_dp_ccd" name="Core Capability Drivethrough" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+      <userTask id="ut_dp_trr" name="Transition Readiness Review" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
       <endEvent id="ee_dp" name="End Development Phase"></endEvent>
       <exclusiveGateway id="eg_dp_1" name="Exclusive Gateway"></exclusiveGateway>
       <exclusiveGateway id="eg_dp_2" name="Exclusive Gateway"></exclusiveGateway>
@@ -96,61 +96,90 @@
       <endEvent id="ee_op" name="End Operation Phase"></endEvent>
       <sequenceFlow id="f_op_1" sourceRef="se_op" targetRef="ee_op"></sequenceFlow>
     </subProcess>
-    <startEvent id="se_g" name="Start" activiti:async="true"></startEvent>
+    <startEvent id="se_g" name="Start"></startEvent>
     <endEvent id="ee_g" name="End"></endEvent>
     <sequenceFlow id="f_g_1" sourceRef="se_g" targetRef="sp_ep"></sequenceFlow>
     <sequenceFlow id="f_g_2" sourceRef="sp_op" targetRef="ee_g"></sequenceFlow>
-    <userTask id="ut_vcr" name="Valuation Commitment Review" activiti:assignee="kermit"></userTask>
-    <userTask id="ut_vcr_aspod" name="Adjust scope, priorities, or discontinue" activiti:assignee="kermit"></userTask>
-    <exclusiveGateway id="eg_vcr_1" default="f_vcr_3"></exclusiveGateway>
+    <userTask id="ut_vcr" name="Valuation Commitment Review" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <userTask id="ut_vcr_aspod" name="Adjust scope, priorities, or discontinue - VCR" isForCompensation="true" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <exclusiveGateway id="eg_vcr_1"></exclusiveGateway>
     <exclusiveGateway id="eg_vcr_2"></exclusiveGateway>
     <sequenceFlow id="f_vcr_1" sourceRef="sp_ep" targetRef="ut_vcr"></sequenceFlow>
     <sequenceFlow id="f_vcr_2" sourceRef="ut_vcr" targetRef="eg_vcr_1"></sequenceFlow>
-    <sequenceFlow id="f_vcr_3" name="Acceptable" sourceRef="eg_vcr_1" targetRef="sp_vp"></sequenceFlow>
-    <sequenceFlow id="f_vcr_4" name="High, but addressable" sourceRef="eg_vcr_1" targetRef="sp_ep"></sequenceFlow>
-    <sequenceFlow id="f_vcr_5" name="Too high, unaddressable" sourceRef="eg_vcr_1" targetRef="ut_vcr_aspod"></sequenceFlow>
+    <sequenceFlow id="f_vcr_3" name="Acceptable" sourceRef="eg_vcr_1" targetRef="sp_vp">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "acceptable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_vcr_4" name="High, but addressable" sourceRef="eg_vcr_1" targetRef="sp_ep">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "addressable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_vcr_5" name="Too high, unaddressable" sourceRef="eg_vcr_1" targetRef="ut_vcr_aspod">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "unaddressable"}]]></conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="f_vcr_6" sourceRef="ut_vcr_aspod" targetRef="eg_vcr_2"></sequenceFlow>
     <sequenceFlow id="f_vcr_7" sourceRef="eg_vcr_2" targetRef="sp_ep"></sequenceFlow>
     <sequenceFlow id="f_vcr_8" sourceRef="eg_vcr_2" targetRef="ee_g"></sequenceFlow>
-    <userTask id="ut_fcr" name="Foundation Commitment Review" activiti:assignee="kermit"></userTask>
-    <userTask id="ut_fcr_aspod" name="Adjust scope, priorities, or discontinue" activiti:assignee="kermit"></userTask>
-    <exclusiveGateway id="eg_fcr_1" default="f_fcr_3"></exclusiveGateway>
+    <userTask id="ut_fcr" name="Foundations Commitment Review" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <userTask id="ut_fcr_aspod" name="Adjust scope, priorities, or discontinue - FCR" isForCompensation="true" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <exclusiveGateway id="eg_fcr_1"></exclusiveGateway>
     <exclusiveGateway id="eg_fcr_2"></exclusiveGateway>
     <sequenceFlow id="f_fcr_1" sourceRef="sp_vp" targetRef="ut_fcr"></sequenceFlow>
     <sequenceFlow id="f_fcr_2" sourceRef="ut_fcr" targetRef="eg_fcr_1"></sequenceFlow>
-    <sequenceFlow id="f_fcr_3" name="Acceptable" sourceRef="eg_fcr_1" targetRef="sp_fp"></sequenceFlow>
-    <sequenceFlow id="f_fcr_4" name="High, but addressable" sourceRef="eg_fcr_1" targetRef="sp_vp"></sequenceFlow>
-    <sequenceFlow id="f_fcr_5" name="Too high, unaddressable" sourceRef="eg_fcr_1" targetRef="ut_fcr_aspod"></sequenceFlow>
+    <sequenceFlow id="f_fcr_3" name="Acceptable" sourceRef="eg_fcr_1" targetRef="sp_fp">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "acceptable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_fcr_4" name="High, but addressable" sourceRef="eg_fcr_1" targetRef="sp_vp">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "addressable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_fcr_5" name="Too high, unaddressable" sourceRef="eg_fcr_1" targetRef="ut_fcr_aspod">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "unaddressable"}]]></conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="f_fcr_6" sourceRef="ut_fcr_aspod" targetRef="eg_fcr_2"></sequenceFlow>
     <sequenceFlow id="f_fcr_7" sourceRef="eg_fcr_2" targetRef="sp_vp"></sequenceFlow>
     <sequenceFlow id="f_fcr_8" sourceRef="eg_fcr_2" targetRef="ee_g"></sequenceFlow>
-    <userTask id="ut_dcr" name="Development Commitment Review"></userTask>
-    <userTask id="ut_dcr_aspod" name="Adjust scope, prioirties, or discontinue" activiti:assignee="kermit"></userTask>
-    <exclusiveGateway id="eg_dcr_1" default="f_dcr_3"></exclusiveGateway>
+    <userTask id="ut_dcr" name="Development Commitment Review" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <userTask id="ut_dcr_aspod" name="Adjust scope, prioirties, or discontinue - DCR" isForCompensation="true" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <exclusiveGateway id="eg_dcr_1"></exclusiveGateway>
     <exclusiveGateway id="eg_dcr_2"></exclusiveGateway>
     <sequenceFlow id="f_dcr_1" sourceRef="sp_fp" targetRef="ut_dcr"></sequenceFlow>
     <sequenceFlow id="f_dcr_2" sourceRef="ut_dcr" targetRef="eg_dcr_1"></sequenceFlow>
-    <sequenceFlow id="f_dcr_3" name="Acceptable" sourceRef="eg_dcr_1" targetRef="sp_dp"></sequenceFlow>
-    <sequenceFlow id="f_dcr_4" name="High, but addressable" sourceRef="eg_dcr_1" targetRef="sp_fp"></sequenceFlow>
-    <sequenceFlow id="f_dcr_5" name="Too high, unaddressable" sourceRef="eg_dcr_1" targetRef="ut_dcr_aspod"></sequenceFlow>
+    <sequenceFlow id="f_dcr_3" name="Acceptable" sourceRef="eg_dcr_1" targetRef="sp_dp">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "acceptable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_dcr_4" name="High, but addressable" sourceRef="eg_dcr_1" targetRef="sp_fp">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "addressable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_dcr_5" name="Too high, unaddressable" sourceRef="eg_dcr_1" targetRef="ut_dcr_aspod">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "unaddressable"}]]></conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="f_dcr_6" sourceRef="ut_dcr_aspod" targetRef="eg_dcr_2"></sequenceFlow>
     <sequenceFlow id="f_dcr_7" sourceRef="eg_dcr_2" targetRef="sp_fp"></sequenceFlow>
     <sequenceFlow id="f_dcr_8" sourceRef="eg_dcr_2" targetRef="ee_g"></sequenceFlow>
-    <userTask id="ut_ocr" name="Operation Commitment Review"></userTask>
-    <userTask id="ut_ocr_aspod" name="Adjust scope, priorities, or discontinue" activiti:assignee="kermit"></userTask>
-    <exclusiveGateway id="eg_ocr_1" default="f_ocr_3"></exclusiveGateway>
+    <userTask id="ut_ocr" name="Operation Commitment Review" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <userTask id="ut_ocr_aspod" name="Adjust scope, priorities, or discontinue - OCR" isForCompensation="true" activiti:candidateGroups="Implementation Team" activiti:category="Implementation Team"></userTask>
+    <exclusiveGateway id="eg_ocr_1"></exclusiveGateway>
     <exclusiveGateway id="eg_ocr_2"></exclusiveGateway>
     <sequenceFlow id="f_ocr_1" sourceRef="sp_dp" targetRef="ut_ocr"></sequenceFlow>
     <sequenceFlow id="f_ocr_2" sourceRef="ut_ocr" targetRef="eg_ocr_1"></sequenceFlow>
-    <sequenceFlow id="f_ocr_3" name="Acceptable" sourceRef="eg_ocr_1" targetRef="sp_op"></sequenceFlow>
-    <sequenceFlow id="f_ocr_4" name="High, but addressable" sourceRef="eg_ocr_1" targetRef="sp_dp"></sequenceFlow>
-    <sequenceFlow id="f_ocr_5" name="Too high, unaddressable" sourceRef="eg_ocr_1" targetRef="ut_ocr_aspod"></sequenceFlow>
+    <sequenceFlow id="f_ocr_3" name="Acceptable" sourceRef="eg_ocr_1" targetRef="sp_op">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "acceptable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_ocr_4" name="High, but addressable" sourceRef="eg_ocr_1" targetRef="sp_dp">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "addressable"}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="f_ocr_5" name="Too high, unaddressable" sourceRef="eg_ocr_1" targetRef="ut_ocr_aspod">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${exec_default == "unaddressable"}]]></conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="f_ocr_6" sourceRef="ut_ocr_aspod" targetRef="eg_ocr_2"></sequenceFlow>
     <sequenceFlow id="f_ocr_7" sourceRef="eg_ocr_2" targetRef="sp_dp"></sequenceFlow>
     <sequenceFlow id="f_ocr_8" sourceRef="eg_ocr_2" targetRef="ee_g"></sequenceFlow>
+    <dataObject id="exec_default" name="exec_default" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <activiti:value>acceptable</activiti:value>
+      </extensionElements>
+    </dataObject>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_icsm_2nd_level">
-    <bpmndi:BPMNPlane bpmnElement="icsm_2nd_level" id="BPMNPlane_icsm_2nd_level">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Architected_Agile">
+    <bpmndi:BPMNPlane bpmnElement="Architected_Agile" id="BPMNPlane_Architected_Agile">
       <bpmndi:BPMNShape bpmnElement="sp_ep" id="BPMNShape_sp_ep">
         <omgdc:Bounds height="191.0" width="351.0" x="122.0" y="49.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
